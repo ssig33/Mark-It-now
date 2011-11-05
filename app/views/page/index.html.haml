@@ -1,0 +1,20 @@
+=content_for :title do
+  Mark It Now!
+%br
+%h1 Search
+=text_field_tag :word
+#area
+%h1 Recents
+-@recents.each do |r|
+  -begin
+    %p.link_to_page{id: "linkto_#{r.page.comic_id}_#{r.page.page}"}
+      =r.page.comic.title
+      (Page
+      =r.page.page
+      )
+  -rescue
+
+.none
+  %span#action=params[:action]
+  %span#controller=params[:controller]
+  %span#id=params[:id]

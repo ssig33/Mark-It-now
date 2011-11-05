@@ -1,0 +1,19 @@
+body{
+  text-align:center;
+  }
+#all, .all{
+  max-width:860px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+}
+
+#notice{ color:green; }
+#error{ color:red; }
+.small{ font-size:small;}
+
+a{ color:blue; }
+
+img{ max-width:100%; }
+
+.lightgray{color:lightgray}

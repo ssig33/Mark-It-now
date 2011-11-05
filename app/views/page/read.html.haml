@@ -1,0 +1,35 @@
+=content_for :title do
+  =@comic.title
+.center
+  #area
+    #page_insert
+  .control
+    %p
+      %span#left="<<"
+      　
+      %span#right=">>"
+      　
+      %span#plus1="+1"
+      　
+      %span#bound
+    %p
+      %span=text_field_tag :page_jump
+      %span /
+      %span=@comic.max_page
+      　
+      %span#jump Jump
+    %p
+      %span#book_list Book List
+      %span#aozora
+    %p.title=@comic.title
+    %p=link_to 'Aozora mode', action: :aozora, id: @comic.id
+    %div.cache
+      %span#cache_insert
+    .none
+      %span#is_left=@comic.left
+      %span#max_page=@comic.max_page
+      %span#action=params[:action]
+      %span#controller=params[:controller]
+      %span#id=params[:id]
+      %span#page_initial=params[:page]
+      %span#now

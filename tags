@@ -1,0 +1,67 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddLeftToComic	db/migrate/20111012013920_add_left_to_comic.rb	/^class AddLeftToComic < ActiveRecord::Migration$/;"	c
+AddNameToPage	db/migrate/20111012070703_add_name_to_page.rb	/^class AddNameToPage < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:MarkItNow
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ChangeText	db/migrate/20111012130220_change_text.rb	/^class ChangeText < ActiveRecord::Migration$/;"	c
+Comic	app/models/comic.rb	/^class Comic < ActiveRecord::Base$/;"	c
+CreateComics	db/migrate/20111011115812_create_comics.rb	/^class CreateComics < ActiveRecord::Migration$/;"	c
+CreatePages	db/migrate/20111012064531_create_pages.rb	/^class CreatePages < ActiveRecord::Migration$/;"	c
+MarkItNow	config/application.rb	/^module MarkItNow$/;"	m
+Page	app/models/page.rb	/^class Page < ActiveRecord::Base$/;"	c
+PageController	app/controllers/page_controller.rb	/^class PageController < ApplicationController$/;"	c
+PageHelper	app/helpers/page_helper.rb	/^module PageHelper$/;"	m
+Search	app/models/search.rb	/^class Search$/;"	c
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SessionsHelper	app/helpers/sessions_helper.rb	/^module SessionsHelper$/;"	m
+_id	app/assets/javascripts/application.js	/^function _id(){$/;"	f
+_now	app/assets/javascripts/application.js	/^function _now(str){$/;"	f
+change	db/migrate/20111011115812_create_comics.rb	/^  def change$/;"	f	class:CreateComics
+change	db/migrate/20111012013920_add_left_to_comic.rb	/^  def change$/;"	f	class:AddLeftToComic
+change	db/migrate/20111012064531_create_pages.rb	/^  def change$/;"	f	class:CreatePages
+change	db/migrate/20111012070703_add_name_to_page.rb	/^  def change$/;"	f	class:AddNameToPage
+change	db/migrate/20111012130220_change_text.rb	/^  def change$/;"	f	class:ChangeText
+change_bound	app/controllers/page_controller.rb	/^  def change_bound$/;"	f	class:PageController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+defaults.allowPageScroll	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			triggerOnTouchEnd : true,	\/\/ Boolean, if true, the swipe events are triggered when the touch end event is received (user releases finger).  If false, it will be triggered on reaching the threshold, and then cancel the touch event automatically.$/;"	p
+defaults.click	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipeStatus		: null,		\/\/ Function - A handler triggered for every phase of the swipe. Handler is passed 4 arguments: event : The original event object, phase:The current swipe face, either "start?, "move?, "end? or "cancel?. direction : The swipe direction, either "up?, "down?, "left " or "right?.distance : The distance of the swipe.$/;"	p
+defaults.fingers	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^		var defaults = {$/;"	p
+defaults.swipe	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			threshold 		: 75,								\/\/ int - The number of pixels that the user must move their finger by before it is considered a swipe. Default is 75.$/;"	p
+defaults.swipeDown	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipeUp			: null,		\/\/ Function - A handler that is triggered for "up" swipes. Accepts 3 arguments, the original event object, the direction of the swipe : "left", "right", "up", "down" and the distance of the swipe.$/;"	p
+defaults.swipeLeft	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipe 			: null,		\/\/ Function - A catch all handler that is triggered for all swipe directions. Accepts 2 arguments, the original event object and the direction of the swipe : "left", "right", "up", "down".$/;"	p
+defaults.swipeRight	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipeLeft		: null,		\/\/ Function - A handler that is triggered for "left" swipes. Accepts 3 arguments, the original event object, the direction of the swipe : "left", "right", "up", "down" and the distance of the swipe.$/;"	p
+defaults.swipeStatus	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipeDown		: null,		\/\/ Function - A handler that is triggered for "down" swipes. Accepts 3 arguments, the original event object, the direction of the swipe : "left", "right", "up", "down" and the distance of the swipe.$/;"	p
+defaults.swipeUp	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			swipeRight		: null,		\/\/ Function - A handler that is triggered for "right" swipes. Accepts 3 arguments, the original event object, the direction of the swipe : "left", "right", "up", "down" and the distance of the swipe.$/;"	p
+defaults.threshold	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			fingers 		: 1,								\/\/ int - The number of fingers to trigger the swipe, 1 or 2. Default is 1.$/;"	p
+defaults.triggerOnTouchEnd	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^			click			: null,		\/\/ Function	- A handler triggered when a user just clicks on the item, rather than swipes it. If they do not move, click is triggered, if they do move, it is not.$/;"	p
+define_schema	app/models/search.rb	/^  def define_schema$/;"	f	class:Search
+files	app/models/comic.rb	/^  def files$/;"	f
+fn.swipe	app/assets/javascripts/jquery.touchSwipe-1.2.4.js	/^\/*$/;"	f
+image	app/controllers/page_controller.rb	/^  def image$/;"	f	class:PageController
+index	app/controllers/page_controller.rb	/^  def index$/;"	f	class:PageController
+index	app/controllers/sessions_controller.rb	/^  def index$/;"	f	class:SessionsController
+info	app/controllers/page_controller.rb	/^  def info$/;"	f	class:PageController
+initialize	app/models/search.rb	/^  def initialize$/;"	f	class:Search
+is_left	app/assets/javascripts/application.js	/^function is_left(){$/;"	f
+is_left.height	app/assets/javascripts/application.js	/^function height() {$/;"	f
+is_left.is_portlait	app/assets/javascripts/application.js	/^function is_portlait(){$/;"	f
+is_left.width	app/assets/javascripts/application.js	/^function width() {$/;"	f
+is_left.window_size	app/assets/javascripts/application.js	/^function window_size(){$/;"	f
+login	app/controllers/application_controller.rb	/^  def login$/;"	f	class:ApplicationController
+max_page	app/models/comic.rb	/^  def max_page$/;"	f
+now	app/assets/javascripts/application.js	/^function now(){$/;"	f
+page	app/models/comic.rb	/^  def page count$/;"	f	class:Comic
+read	app/controllers/page_controller.rb	/^  def read$/;"	f	class:PageController
+scan	app/controllers/page_controller.rb	/^  def scan$/;"	f	class:PageController
+scan	app/models/comic.rb	/^  def self.scan$/;"	F	class:Comic
+scan_page_data	app/models/comic.rb	/^  def scan_page_data$/;"	f
+search	app/controllers/page_controller.rb	/^  def search$/;"	f	class:PageController
+search	app/models/comic.rb	/^  def self.search word$/;"	F
+search_index	app/models/comic.rb	/^  def search_index$/;"	f	class:Comic
+title	app/models/comic.rb	/^  def title$/;"	f	class:Comic
