@@ -1,2 +1,8 @@
--@search.each do |s|
-  %p.link_to{style: "font-size:2em", id: "link_to_#{s.id}"}=s.title
+-@search.sort{|a,b| a.path.split('/') <=> b.path.split('/')}.each do |s|
+  -case s.file_type
+  -when 'zip'
+    %p
+      =link_to s.title, read_path(s), class: 'search'
+  -when 'txt'
+    %p
+      =link_to s.title, text_path(s), class: 'search'

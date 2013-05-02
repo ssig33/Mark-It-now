@@ -12,8 +12,10 @@ class Search
 
   def define_schema
     Groonga::Schema.define do |schema|
-      schema.create_table("Comics", type: :patricia_trie, :key_type => "Text"){|table| table.short_text "comic_id"}
-      schema.create_table("Terms", type: :patricia_trie, key_type: "ShortText", default_tokenizer: "TokenBigram", key_normalize: true) { |table|  table.index("Comics._key") }
+      schema.create_table("Comics", type: :patricia_trie, :key_type => "ShortText"){|table| 
+        table.text "book_path"
+        table.short_text "comic_id"}
+      schema.create_table("Terms", type: :patricia_trie, key_type: "ShortText", default_tokenizer: "TokenBigram", key_normalize: true) { |table|  table.index("Comics.book_path") }
     end
   end
 end

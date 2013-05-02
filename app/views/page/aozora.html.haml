@@ -1,3 +1,16 @@
-=stylesheet_link_tag "/common.css"
-#all
-  =raw @comic.aozora
+-content_for :title do
+  =@comic.title
+-page = params[:page].to_i
+#text
+  .pager
+    -if page > 0
+      =link_to 'Prev', aozora_path(id: @comic.id, page: page-1), class: 'list h3'
+    =link_to 'List', index_path, class: 'list h3', id: 'scroll_to'
+  =raw @comic.aozora(params[:page]).gsub(/｜(.*?)《(.*?)》/, "<ruby><rb>\\1</rb><rt>\\2</rt></ruby>").gsub(/(..)《(.*?)》/, "<ruby><rb>\\1</rb><rt>\\2</rt></ruby>")
+  .pager
+    =link_to 'Next', aozora_path(id: @comic.id, page: page+1), class: 'list h3'
+    =link_to 'List', index_path, class: 'list h3'
+.none
+  %span#aozora_page=page
+  %span#id=@comic.id
+= render :partial => 'aozora_assets'

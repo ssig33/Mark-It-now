@@ -1,0 +1,17 @@
+-content_for :title do
+  =@comic.title
+-page = params[:page].to_i
+#text
+  .pager
+    -if page > 0
+      =link_to 'Prev', text_path(id: @comic.id, page: page-1), class: 'list h3'
+    =link_to 'List', index_path, class: 'list h3', id: 'scroll_to'
+  != @txt.gsub(/｜(.*?)《(.*?)》/, "<ruby><rb>\\1</rb><rt>\\2</rt></ruby>").gsub(/(..)《(.*?)》/, "<ruby><rb>\\1</rb><rt>\\2</rt></ruby>")
+  .pager
+    =link_to 'Next', text_path(id: @comic.id, page: page+1), class: 'list h3'
+    =link_to 'List', index_path, class: 'list h3'
+
+.none
+  %span#txt_page=params[:page].to_i
+  %span#id=params[:id]
+= render :partial => 'aozora_assets'

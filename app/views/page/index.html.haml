@@ -7,12 +7,16 @@
 %h1 Recents
 -@recents.each do |r|
   -begin
-    %p.link_to_page{id: "linkto_#{r.page.comic_id}_#{r.page.page}"}
-      =r.page.comic.title
-      (Page
-      =r.page.page
-      )
-  -rescue
+    %p
+      -case r.class.to_s
+      -when 'Recent'
+        =link_to "#{r.page.comic.title} (Page #{r.page.page})", read_path(id: r.page.comic.id, page: r.page.page)
+      -when 'RecentAozora'
+        =link_to "#{r.comic.title} (Page #{r.page.to_i})", aozora_path(id: r.comic.id, page: r.page.to_i)
+      -when 'RecentTxt'
+        =link_to "#{r.comic.title} (Page #{r.page.to_i})", text_path(id: r.comic.id, page: r.page.to_i)
+  -rescue =>e
+    -r.destroy
 
 .none
   %span#action=params[:action]

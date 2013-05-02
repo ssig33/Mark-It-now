@@ -11,47 +11,105 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015062141) do
+ActiveRecord::Schema.define(:version => 20130304045143) do
 
   create_table "comics", :force => true do |t|
     t.string   "path"
     t.boolean  "aozora"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.boolean  "left"
     t.string   "file_type"
   end
 
   add_index "comics", ["path"], :name => "index_comics_on_path"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "image_caches", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "image_caches", ["created_at"], :name => "index_image_caches_on_created_at"
+  add_index "image_caches", ["page_id"], :name => "index_image_caches_on_page_id"
+
   create_table "pages", :force => true do |t|
     t.integer  "comic_id"
     t.integer  "page"
     t.boolean  "portlait"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "name"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.text     "name",       :limit => 255
+    t.text     "memo"
   end
 
   add_index "pages", ["comic_id"], :name => "index_pages_on_comic_id"
   add_index "pages", ["page"], :name => "index_pages_on_page"
 
+  create_table "recent_aozoras", :force => true do |t|
+    t.integer  "comic_id"
+    t.integer  "page"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "user_id"
+  end
+
+  add_index "recent_aozoras", ["comic_id"], :name => "index_recent_aozoras_on_comic_id"
+  add_index "recent_aozoras", ["user_id"], :name => "index_recent_aozoras_on_user_id"
+
+  create_table "recent_txts", :force => true do |t|
+    t.integer  "comic_id"
+    t.integer  "page"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "user_id"
+  end
+
+  add_index "recent_txts", ["comic_id"], :name => "index_recent_txts_on_comic_id"
+  add_index "recent_txts", ["user_id"], :name => "index_recent_txts_on_user_id"
+
   create_table "recents", :force => true do |t|
     t.integer  "page_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "user_id"
   end
 
   add_index "recents", ["page_id"], :name => "index_recents_on_page_id"
+  add_index "recents", ["user_id"], :name => "index_recents_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "settings", :force => true do |t|
+    t.string   "cache_path_prefix"
+    t.string   "cache_path_url"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
 end

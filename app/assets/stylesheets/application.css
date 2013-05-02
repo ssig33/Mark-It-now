@@ -8,8 +8,11 @@
 .center{text-align:center;}
 .none{display:none}
 
-.control p span{font-size: 3em}
+.control p a, .control p span{font-size: 3em}
+
 p.title{font-size: normal}
 
 img.cache{height:1px; width:1px}
 #control{height:200px;}
+
+a.search{font-size:2em;}

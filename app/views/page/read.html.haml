@@ -5,24 +5,24 @@
     #page_insert
   .control
     %p
-      %span#left="<<"
-      　
-      %span#right=">>"
-      　
-      %span#plus1="+1"
-      　
-      %span#bound
+      %a#left{href: 'javascript:void(0)'}="<<"
+      &nbsp;&nbsp;
+      %a#right{href: 'javascript:void(0)'}=">>"
+      &nbsp;&nbsp;
+      %a#plus1{href: 'javascript:void(0)'}="+1"
+      &nbsp;&nbsp;
+      %a#bound{href: 'javascript:void(0)'}
     %p
       %span=text_field_tag :page_jump
       %span /
       %span=@comic.max_page
-      　
-      %span#jump Jump
+      &nbsp;&nbsp;
+      %a#jump{href: 'javascript:void(0)'} Jump
     %p
-      %span#book_list Book List
+      =link_to 'Book List', {action: :index}, id: 'book_list'
       %span#aozora
     %p.title=@comic.title
-    %p=link_to 'Aozora mode', action: :aozora, id: @comic.id
+    %p=link_to 'Aozora mode', aozora_path(@comic)
     %div.cache
       %span#cache_insert
     .none
@@ -32,4 +32,5 @@
       %span#controller=params[:controller]
       %span#id=params[:id]
       %span#page_initial=params[:page]
-      %span#now
+      %span#now=''
+      %span#info=@info

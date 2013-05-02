@@ -4,7 +4,7 @@ class Misc
     str
   end
 
-  def auth user, password
-    password_hash(password, CONFIG["users"][user]["salt"]) == CONFIG["users"][user]["password"]
+  def auth password
+    password_hash(password, CONFIG["user"]["salt"]) == CONFIG["user"]["password"]
   end
 end

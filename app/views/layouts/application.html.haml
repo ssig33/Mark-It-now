@@ -1,7 +1,7 @@
 !!!
 %title=yield :title
-= stylesheet_link_tag    "application"
-= javascript_include_tag "application"
+= stylesheet_link_tag    :application
+= javascript_include_tag :application
 = csrf_meta_tags
 %meta{content: 'width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no', name: 'viewport'}
 -if request.env["HTTP_USER_AGENT"] =~ /iPad/
@@ -13,3 +13,6 @@
 %meta{name: "apple-mobile-web-app-status-bar-style", content: "black-translucent"}
 
 #content= yield
+.none
+  %span#controller=params[:controller]
+  %span#action=params[:action]
