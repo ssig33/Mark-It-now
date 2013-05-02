@@ -8,7 +8,6 @@ data
 db/groonga
 config.yml
 database.yml
-Gemfile.lock
 Capfile
 config/deploy.rb
 vendor/bundle
