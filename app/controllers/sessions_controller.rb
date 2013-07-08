@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if Misc.new.auth params[:password]
       session[:login] = true
       session[:user_id] = params[:user]
-      session.map{|x|x}
+      session
       redirect_to controller: :page, action: :index
     else
       redirect_to action: :index   

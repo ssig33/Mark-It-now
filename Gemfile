@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 gem 'mysql2'
-gem 'rroonga', '3.0.0', require: 'groonga'
+gem 'rroonga', '3.0.4', require: 'groonga'
 
 gem 'zipruby'
 gem 'haml'
@@ -24,16 +24,13 @@ gem 'execjs'
 
 gem 'redcarpet'
 
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '4.0.0.beta2'
+gem 'activerecord-session_store'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 
