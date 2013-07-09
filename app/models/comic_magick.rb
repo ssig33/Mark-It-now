@@ -58,6 +58,7 @@ module ComicMagick
   end
 
   def scan_page_data *args
+    return scan_page_data_pdf(*args) if self.pdf?
     ar = self.files
     if self.pages.size == 0
       Zip::Archive.open(self.full_path)  do |as|

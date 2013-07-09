@@ -4,6 +4,7 @@ class Comic < ActiveRecord::Base
   include ComicSearch
   include ComicMagick
   include ComicAozora
+  include ComicPDF
   require "kconv"
   require 'digest/md5'
 
@@ -15,6 +16,13 @@ class Comic < ActiveRecord::Base
       c = Comic.find_by_path(d)
       unless c
         t = Comic.find_or_create_by_path(d, file_type: "zip") 
+        array << t
+      end
+    }
+    Dir.glob("#{::Rails.root}/data/**/*.pdf").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}.each{|d| 
+      c = Comic.find_by_path(d)
+      unless c
+        t = Comic.find_or_create_by_path(d, file_type: "pdf") 
         array << t
       end
     }
