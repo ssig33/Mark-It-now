@@ -15,7 +15,7 @@ module ComicPDF
         FileUtils.mv x, "000#{i}.jpg"
       elsif i < 100
         FileUtils.mv x, "00#{i}.jpg"
-      elsif x < 1000
+      elsif i < 1000
         FileUtils.mv x, "0#{i}.jpg"
       end
     }
