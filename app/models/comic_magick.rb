@@ -78,7 +78,10 @@ module ComicMagick
               c_name = CGI.escape(name)
               puts "#{name} #{index+1}/#{as.count} #{args.first}"
               logger.warn "#{name} #{index+1}/#{as.count} #{args.first}"
-              Page.find_or_create_by_comic_id_and_page(self.id, ar.index(name), {portlait: (x.to_f/y.to_f > 1.0), name: c_name})
+              Page.find_or_create_by(comic_id: self.id, page: ar.index(name)){|instance| 
+                instance.portlait = (x.to_f/y.to_f > 1.0)
+                instance.name = c_name
+              }
             end
           rescue =>e 
             puts 'in stream'

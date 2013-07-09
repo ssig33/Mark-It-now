@@ -15,15 +15,12 @@ class Comic < ActiveRecord::Base
     comics = Dir.glob("#{::Rails.root}/data/**/*.zip").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
     comics.each{|d| 
-      t = Comic.find_or_create_by(path: d){|x| x.file_type = "zip"}
-      array << t
+      array << Comic.find_or_create_by(path: d){|x| x.file_type = "zip"}
     }
-    Dir.glob("#{::Rails.root}/data/**/*.pdf").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}.each{|d| 
-      c = Comic.find_by_path(d)
-      unless c
-        t = Comic.find_or_create_by_path(d, file_type: "pdf") 
-        array << t
-      end
+    comics = Dir.glob("#{::Rails.root}/data/**/*.pdf").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
+    Comic.where(path: comics).each{|x| comics.delete x.path}
+    comics.each{|d| 
+      array << Comic.find_or_create_by(path: d){|x| x.file_type = "pdf"}
     }
     array.each_with_index{|a,i|
       a.scan_page_data "#{i+1}/#{array.count}"
@@ -33,8 +30,7 @@ class Comic < ActiveRecord::Base
     comics = Dir.glob("#{::Rails.root}/data/**/*.txt").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
     comics.each{|d| 
-      t = Comic.find_or_create_by(path: d){|x| x.file_type = "txt"}
-      t.search_index
+      Comic.find_or_create_by(path: d){|x| x.file_type = "txt"}.search_index
     }
     true
   end
