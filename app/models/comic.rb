@@ -57,7 +57,7 @@ class Comic < ActiveRecord::Base
     cs = Comic.all
     cs.each_with_index{|x,i|
       x.search_index
-      puts "#{i+1} / #{cs.count}"
+      puts "#{i+1} / #{cs.count}" if i % 100 == 0
     }
   end
 end
