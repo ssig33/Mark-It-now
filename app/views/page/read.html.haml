@@ -19,7 +19,7 @@
       &nbsp;&nbsp;
       %a#jump{href: 'javascript:void(0)'} Jump
     %p
-      =link_to 'Book List', {action: :index}, id: 'book_list', 'data-no-turbolink': true
+      =link_to 'Book List', {action: :index}, {id: 'book_list', 'data-no-turbolink' => true}
       %span#aozora
     %p.title=@comic.title
     %p=link_to 'Aozora mode', aozora_path(@comic)
