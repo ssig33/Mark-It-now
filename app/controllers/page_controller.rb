@@ -1,5 +1,9 @@
 class PageController < ApplicationController
   before_filter :login
+  def from_path
+    redirect_to read_path(Comic.where(path: params[:id]).first.id)
+  end
+
   def index
     #Recent.order("id desc").offset(31).delete_all if Recent.count > 30
     @recents = Recent.includes(page: :comic).where(user_id: session[:user_id]).order("id desc").limit(25)+RecentAozora.where(user_id: session[:user_id]).order('id desc').limit(25) + RecentTxt.where(user_id: session[:user_id]).order("id desc").limit(25)
