@@ -1,4 +1,4 @@
-#coding:utf-8
+#tcoding:utf-8
 module ComicMagick
   def page count
     count = count.to_i-1
@@ -23,6 +23,8 @@ module ComicMagick
       type = 'image/jpeg'
     when "PNG"
       type = 'image/png'
+    when "GIF"
+      type = 'image/gif'
     end
     r = m.resize_to_fit(1024,1024)
     [r.to_blob, type, (x.to_f/y.to_f > 1.0)]
@@ -47,6 +49,8 @@ module ComicMagick
         type = 'image/jpeg'
       when "PNG"
         type = 'image/png'
+      when 'GIF'
+        type = 'image/gif'
       end
       r = m.resize_to_fit(1024,1024)
       [r.to_blob, type, (x.to_f/y.to_f > 1.0)]
@@ -72,6 +76,8 @@ module ComicMagick
                 type = 'image/jpeg'
               when "PNG"
                 type = 'image/png'
+              when 'GIF'
+                type = 'image/gif'
               end
               x = m.columns
               y = m.rows
@@ -102,7 +108,7 @@ module ComicMagick
     ar = []
     Zip::Archive.open(self.full_path)  do |as|
       as.each do |a|
-        if a.name =~ /.png$/ or a.name =~ /.jpg$/ or a.name =~ /.PNG$/ or a.name =~ /.JPG$/ or a.name =~ /.jpeg$/ or a.name =~ /.JPEG$/
+        if a.name =~ /.png$/ or a.name =~ /.jpg$/ or a.name =~ /.PNG$/ or a.name =~ /.JPG$/ or a.name =~ /.jpeg$/ or a.name =~ /.JPEG$/ or a.name =~ /.gif$/ or a.name =~ /.GIF$/
           ar << a.name.toutf8
         end
       end
