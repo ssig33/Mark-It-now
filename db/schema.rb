@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130304045143) do
+ActiveRecord::Schema.define(version: 20140727021154) do
 
   create_table "comics", force: true do |t|
     t.string   "path"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20130304045143) do
 
   add_index "image_caches", ["created_at"], name: "index_image_caches_on_created_at"
   add_index "image_caches", ["page_id"], name: "index_image_caches_on_page_id"
+
+  create_table "memos", force: true do |t|
+    t.integer  "page_id"
+    t.string   "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "memos", ["page_id", "user_id"], name: "index_memos_on_page_id_and_user_id"
 
   create_table "pages", force: true do |t|
     t.integer  "comic_id"

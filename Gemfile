@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.4'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 gem 'mysql2'
-gem 'rroonga', '3.0.4', require: 'groonga'
+gem 'rroonga', require: 'groonga'
 
 gem 'zipruby'
 gem 'haml'
@@ -24,8 +24,7 @@ gem 'execjs'
 
 gem 'redcarpet'
 
-gem 'delayed_job_active_record', '4.0.0.beta2'
-gem 'activerecord-session_store'
+gem 'delayed_job_active_record'
 
 
 gem 'sass-rails'

@@ -5,6 +5,9 @@ class Misc
   end
 
   def auth password
+    p password_hash(password, CONFIG["user"]["salt"])
+    p password
+    p CONFIG['user']['salt']
     password_hash(password, CONFIG["user"]["salt"]) == CONFIG["user"]["password"]
   end
 end
