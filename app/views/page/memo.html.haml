@@ -4,7 +4,7 @@
   =link_to memo_path(@comic, page: (params[:page].to_i+1)), 'data-no-turbolink' => true do
     #image=image_tag image_path(id: @comic.id, page: params[:page])
 #form
-  %textarea#body=@memo.body
+  %textarea#body=CGI.unescape @memo.body
 %div.clear=''
 #memo_controll.control
   %p

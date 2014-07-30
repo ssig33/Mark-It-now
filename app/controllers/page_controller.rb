@@ -97,7 +97,7 @@ class PageController < ApplicationController
     @comic = Comic.find(params[:id])
     @page = @comic.pages.where(page: params[:page]).first
     @memo = @page.memo(session[:user_id])
-    @memo.body = params[:body]
+    @memo.body = CGI.escape params[:body]
     @memo.save
     render text: true
   end
