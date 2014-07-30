@@ -36,6 +36,7 @@ class PageController < ApplicationController
   def image
     @comic = Comic.find(params[:id])
     image, type, portlait = @comic.page params[:page]
+    logger.debug portlait
     if type
       send_data image, type: type
     else
@@ -47,6 +48,7 @@ class PageController < ApplicationController
     logger.debug params
     @comic = Comic.find(params[:id])
     image, type, portlait = @comic.from_name(params[:name])
+    logger.debug portlait
     send_data image, type: type
   end
 
@@ -81,6 +83,23 @@ class PageController < ApplicationController
     end
     comic.save
     render json: {result: true}
+  end
+
+  def memo
+    @comic = Comic.find(params[:id])
+    @page = @comic.pages.where(page: params[:page]).first
+    @memo = @page.memo(session[:user_id])
+    Recent.includes(:page).where(user_id: session[:user_id], 'pages.comic_id' => params[:id]).destroy_all# rescue nil
+    Recent.create page_id: @page.id, user_id: session[:user_id]
+  end
+
+  def save_memo
+    @comic = Comic.find(params[:id])
+    @page = @comic.pages.where(page: params[:page]).first
+    @memo = @page.memo(session[:user_id])
+    @memo.body = params[:body]
+    @memo.save
+    render text: true
   end
 
   def save_recent

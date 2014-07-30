@@ -10,5 +10,7 @@ MarkItNow::Application.routes.draw do
   get 'save_recent_text/:id' => 'page#save_recent_text'
   get 'img_from_name/:id' => 'page#img_from_name'
   get 'to/:id' => 'page#from_path', constraints: {id: /.*/}
+  get 'memo/:id' => 'page#memo', as: :memo
+  post 'memo/:id' => 'page#save_memo'
   match ':controller(/:action(/:id(.:format)))', via: [:post, :get]
 end

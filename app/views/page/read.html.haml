@@ -23,6 +23,7 @@
       %span#aozora
     %p.title=@comic.title
     %p=link_to 'Aozora mode', aozora_path(@comic)
+    %p=link_to 'Memo mode', memo_path(@comic), id: 'memo_link', original: memo_path(@comic), 'data-no-turbolink' => true
     %div.cache
       %span#cache_insert
     .none

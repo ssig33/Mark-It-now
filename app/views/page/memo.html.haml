@@ -1,0 +1,33 @@
+=content_for :title do
+  Memo: #{@comic.title} Page: #{params[:page]}
+#memo
+  =link_to memo_path(@comic, page: (params[:page].to_i+1)), 'data-no-turbolink' => true do
+    #image=image_tag image_path(id: @comic.id, page: params[:page])
+#form
+  %textarea#body=@memo.body
+%div.clear=''
+#memo_controll.control
+  %p
+    =link_to 'Next', memo_path(@comic, page: (params[:page].to_i+1)), 'data-no-turbolink' => true
+    &nbsp;
+    =link_to 'Prev', memo_path(@comic, page: (params[:page].to_i-1)), 'data-no-turbolink' => true
+
+  %p=link_to 'Book List', {action: :index}, {id: 'book_list', 'data-no-turbolink' => true}
+:css
+  #memo, #image, img{
+    max-height: 100%;
+    max-width: 100%;
+  }
+  #memo, #form{
+    float: left;
+    text-align: center;
+  }
+  #form textarea{
+    width: 100%;
+  }
+  .clear{
+    clear:both;
+  }
+  #memo_controll{
+    text-align: center !important;
+  }

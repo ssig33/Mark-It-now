@@ -35,8 +35,13 @@ window.Comic = ->
     count = parseInt($("#now").text())
     if is_NaN(count) then 0 else return count
   @get_portlait = => $.each JSON.parse($('#info').text()), (page,portlait)=> localStorage.setItem "portlait/#{@id}/#{page}", portlait
+
+  @set_memo_page = (page)=>
+    href = $('#memo_link').attr('original') + "/?page=#{page}"
+    $('#memo_link').attr(href: href)
   
   @open_page = (page)=>
+    @set_memo_page page
     @save_recent page
     $("#page_jump").val(page)
     page = @max_page if page > @max_page

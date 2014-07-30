@@ -6,6 +6,7 @@ class Page < ActiveRecord::Base
   def create_cache
     s = Setting.first
     image, type, portlait = self.comic.from_name CGI.unescape(self.name).toutf8
+    portlait.to_s
     name = rand(256**16).to_s(16) + '.' + type.split('/').last
     open("#{s.cache_path_prefix}/#{name}", 'wb'){|f| f.puts image}
     ImageCache.create page_id: self.id, name: name
@@ -15,5 +16,9 @@ class Page < ActiveRecord::Base
   
   def image
     self.comic.page(self.page)
+  end
+
+  def memo user_id
+    Memo.find_or_create_by(user_id: user_id, page_id: self.id)
   end
 end
