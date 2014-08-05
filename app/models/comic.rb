@@ -10,14 +10,21 @@ class Comic < ActiveRecord::Base
 
   has_many :pages
   
-  def self.scan
+  def self.scan *path
     array = []
-    comics = Dir.glob("#{::Rails.root}/data/**/*.zip").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
+  
+    if path.first
+      path = "#{::Rails.root}/data/#{path}/"
+    else
+      path = "#{::Rails.root}/data/"
+    end
+
+    comics = Dir.glob("#{path}/**/*.zip").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
     comics.each{|d| 
       array << Comic.find_or_create_by(path: d){|x| x.file_type = "zip"}
     }
-    comics = Dir.glob("#{::Rails.root}/data/**/*.pdf").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
+    comics = Dir.glob("#{path}/**/*.pdf").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
     comics.each{|d| 
       array << Comic.find_or_create_by(path: d){|x| x.file_type = "pdf"}
@@ -27,7 +34,7 @@ class Comic < ActiveRecord::Base
       a.create_cache
       a.search_index
     }
-    comics = Dir.glob("#{::Rails.root}/data/**/*.txt").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
+    comics = Dir.glob("#{path}/**/*.txt").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
     comics.each{|d| 
       Comic.find_or_create_by(path: d){|x| x.file_type = "txt"}.search_index
