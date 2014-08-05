@@ -14,10 +14,12 @@ class Comic < ActiveRecord::Base
     array = []
   
     if path.first
-      path = "#{::Rails.root}/data/#{path}/"
+      path = "#{::Rails.root}/data/#{path.first}"
     else
-      path = "#{::Rails.root}/data/"
+      path = "#{::Rails.root}/data"
     end
+
+    puts path
 
     comics = Dir.glob("#{path}/**/*.zip").map{|x| x.gsub(/#{::Rails.root}\/data\//, "")}
     Comic.where(path: comics).each{|x| comics.delete x.path}
