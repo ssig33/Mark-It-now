@@ -41,6 +41,8 @@ window.Comic = ->
     $('#memo_link').attr(href: href)
   
   @open_page = (page)=>
+    page = 1 if isNaN(page)
+    console.log "open page: #{page}"
     @set_memo_page page
     @save_recent page
     $("#page_jump").val(page)
@@ -68,9 +70,9 @@ window.Comic = ->
     @img_ms_swiper()
   @img_style = (mode)=>
     if mode == "portlait"
-      "max-height:#{@w.height()-5}px; max-width:#{(@w.width()/2)-20}px"
+      "height:#{@w.height()-5}px; max-width:#{(@w.width()/2)-20}px"
     else
-      "max-height:#{@w.height()-5}px; max-width:#{@w.width()-20}px"
+      "max-height:#{@w.height()-5}px; width:#{@w.width()-20}px"
 
   @portlait = (page)=>
     if localStorage["portlait/#{@id}/#{page}"] != undefined and localStorage["portlait/#{@id}/#{page+1}"] != undefined

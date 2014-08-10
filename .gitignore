@@ -11,3 +11,4 @@ database.yml
 Capfile
 config/deploy.rb
 vendor/bundle
+public/cache/
