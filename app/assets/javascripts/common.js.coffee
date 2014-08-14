@@ -5,8 +5,8 @@ window.event_on = (selector, events, func)->
 
 # クリックイベントの付与。
 window.click_on = (selector, func)->
-  event_on(selector, ['click'], func)
   $(selector).css('cursor', 'pointer')
+  event_on(selector, ['click'], func)
 
 # モバイル環境かどうか
 window.mobile = ->

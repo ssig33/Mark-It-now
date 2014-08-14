@@ -27,7 +27,8 @@ window.Comic = ->
     click_on "#right", => @right()
     click_on "#plus1", => @plus1()
     click_on "#jump", => @open_page(parseInt($("#page_jump").val()))
-    click_on '#area', => @next() unless window.navigator.msPointerEnabled
+    click_on '#area', =>
+      @next() unless window.navigator.msPointerEnabled
 
   @save_recent = (page)=>$.get("/save_recent/#{@id}?page=#{page}").success((data)->)
   @set_now = (str)-> $("#now").text(str)
@@ -211,6 +212,6 @@ ready = ->
     window.prev = c.prev
     window.plus1 = c.plus1
 
-$(document).ready(ready)
+    #$(document).ready(ready)
 $(document).on('page:change', ready)
 
