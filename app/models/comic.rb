@@ -69,6 +69,7 @@ class Comic < ActiveRecord::Base
       Comic.find_or_create_by(path: d){|x| x.file_type = "txt"}.search_index
     }
     Comic.search("pdf").select{|x| x.pages.count == 0}.each{|x| x.scan_page_data}
+    PdfResize.execute
     true
   end
 

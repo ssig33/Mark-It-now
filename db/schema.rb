@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727021154) do
+ActiveRecord::Schema.define(version: 20141031033812) do
 
   create_table "comics", force: true do |t|
     t.string   "path"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.datetime "updated_at"
     t.boolean  "left"
     t.string   "file_type"
+    t.boolean  "pdf_resized", default: false
   end
 
-  add_index "comics", ["path"], name: "index_comics_on_path"
+  add_index "comics", ["path"], name: "index_comics_on_path", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0
@@ -34,21 +35,21 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "image_caches", force: true do |t|
     t.integer  "page_id"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "image_caches", ["created_at"], name: "index_image_caches_on_created_at"
-  add_index "image_caches", ["page_id"], name: "index_image_caches_on_page_id"
+  add_index "image_caches", ["created_at"], name: "index_image_caches_on_created_at", using: :btree
+  add_index "image_caches", ["page_id"], name: "index_image_caches_on_page_id", using: :btree
 
   create_table "memos", force: true do |t|
     t.integer  "page_id"
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.datetime "updated_at"
   end
 
-  add_index "memos", ["page_id", "user_id"], name: "index_memos_on_page_id_and_user_id"
+  add_index "memos", ["page_id", "user_id"], name: "index_memos_on_page_id_and_user_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "comic_id"
@@ -66,12 +67,12 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.boolean  "portlait"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "name",       limit: 255
+    t.text     "name"
     t.text     "memo"
   end
 
-  add_index "pages", ["comic_id"], name: "index_pages_on_comic_id"
-  add_index "pages", ["page"], name: "index_pages_on_page"
+  add_index "pages", ["comic_id"], name: "index_pages_on_comic_id", using: :btree
+  add_index "pages", ["page"], name: "index_pages_on_page", using: :btree
 
   create_table "recent_aozoras", force: true do |t|
     t.integer  "comic_id"
@@ -81,19 +82,18 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.string   "user_id"
   end
 
-  add_index "recent_aozoras", ["comic_id"], name: "index_recent_aozoras_on_comic_id"
-  add_index "recent_aozoras", ["user_id"], name: "index_recent_aozoras_on_user_id"
+  add_index "recent_aozoras", ["comic_id"], name: "index_recent_aozoras_on_comic_id", using: :btree
+  add_index "recent_aozoras", ["user_id"], name: "index_recent_aozoras_on_user_id", using: :btree
 
   create_table "recent_txts", force: true do |t|
     t.integer  "comic_id"
     t.integer  "page"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "user_id"
   end
 
-  add_index "recent_txts", ["comic_id"], name: "index_recent_txts_on_comic_id"
-  add_index "recent_txts", ["user_id"], name: "index_recent_txts_on_user_id"
+  add_index "recent_txts", ["comic_id"], name: "index_recent_txts_on_comic_id", using: :btree
 
   create_table "recents", force: true do |t|
     t.integer  "page_id"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.string   "user_id"
   end
 
-  add_index "recents", ["page_id"], name: "index_recents_on_page_id"
-  add_index "recents", ["user_id"], name: "index_recents_on_user_id"
+  add_index "recents", ["page_id"], name: "index_recents_on_page_id", using: :btree
+  add_index "recents", ["user_id"], name: "index_recents_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -112,14 +112,14 @@ ActiveRecord::Schema.define(version: 20140727021154) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "settings", force: true do |t|
     t.string   "cache_path_prefix"
     t.string   "cache_path_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
