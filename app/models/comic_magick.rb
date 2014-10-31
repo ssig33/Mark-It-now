@@ -1,4 +1,4 @@
-#tcoding:utf-8
+#coding:utf-8
 module ComicMagick
   def page count
     count = count.to_i-1
@@ -83,7 +83,6 @@ module ComicMagick
               y = m.rows
               c_name = CGI.escape(name)
               puts "#{name} #{index+1}/#{as.count} #{args.first}"
-              logger.warn "#{name} #{index+1}/#{as.count} #{args.first}"
               Page.find_or_create_by(comic_id: self.id, page: ar.index(name)){|instance| 
                 instance.portlait = (x.to_f/y.to_f > 1.0)
                 instance.name = c_name
@@ -98,10 +97,9 @@ module ComicMagick
         end
       end
     end
-  rescue => e
+  rescue 
+    puts self.full_path
     puts 'from outerspace'
-    p e
-    p e.backtrace
   end
 
   def files
